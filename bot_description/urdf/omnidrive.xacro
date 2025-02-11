@@ -1,0 +1,190 @@
+<?xml version="1.0" ?>
+<robot name="bot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find bot_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find bot_description)/urdf/omnidrive.trans" />
+<xacro:include filename="$(find bot_description)/urdf/omnidrive.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin xyz="0.00024062344110785007 -0.00531572402780089 -0.10823524150435863" rpy="0 0 0"/>
+    <mass value="19.729806517747196"/>
+    <inertia ixx="0.871968" iyy="0.872497" izz="1.726537" ixy="0.000808" iyz="0.001686" ixz="0.000142"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find bot_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find bot_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+  
+<!-- lidar link -->
+<link name="lidar_link">
+  <inertial>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <mass value="0.125"/>
+    <inertia ixx="0.001"  ixy="0"  ixz="0" iyy="0.001" iyz="0" izz="0.001" />
+  </inertial>
+
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+       <cylinder radius="0.0508" length="0.055"/>
+    </geometry>
+  </collision>
+
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+       <cylinder radius="0.0508" length="0.055"/>
+    </geometry>
+  </visual>
+</link>
+
+
+<link name="WHEEL_BR_1">
+  <inertial>
+    <origin xyz="-3.3511498333804735e-06 -2.2205340067527057e-06 3.1009931792391754e-06" rpy="0 0 0"/>
+    <mass value="2.0583849205904534"/>
+    <inertia ixx="0.005254" iyy="0.005254" izz="0.00364" ixy="-0.001613" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.224364 0.224381 0.13668" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find bot_description)/meshes/WHEEL_BR_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.224364 0.224381 0.13668" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find bot_description)/meshes/WHEEL_BR_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="WHEEL_FR_1">
+  <inertial>
+    <origin xyz="3.0814633648901246e-06 -3.6694199714581988e-06 3.100993178739575e-06" rpy="0 0 0"/>
+    <mass value="2.0583849205904534"/>
+    <inertia ixx="0.005254" iyy="0.005254" izz="0.00364" ixy="0.001613" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.224364 -0.224372 0.13668" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find bot_description)/meshes/WHEEL_FR_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.224364 -0.224372 0.13668" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find bot_description)/meshes/WHEEL_FR_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="_WHEEL_FL_1">
+  <inertial>
+    <origin xyz="-4.009711674579641e-06 -2.5619721636116477e-06 3.100993183069445e-06" rpy="0 0 0"/>
+    <mass value="2.0583849205904534"/>
+    <inertia ixx="0.005254" iyy="0.005254" izz="0.00364" ixy="-0.001613" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.224388 -0.224372 0.13668" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find bot_description)/meshes/_WHEEL_FL_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.224388 -0.224372 0.13668" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find bot_description)/meshes/_WHEEL_FL_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="_WHEEL_BL_1">
+  <inertial>
+    <origin xyz="2.422901528048582e-06 -3.3279818155984575e-06 3.1009931830416892e-06" rpy="0 0 0"/>
+    <mass value="2.0583849205904534"/>
+    <inertia ixx="0.005254" iyy="0.005254" izz="0.00364" ixy="0.001613" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.224388 0.224381 0.13668" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find bot_description)/meshes/_WHEEL_BL_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.224388 0.224381 0.13668" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find bot_description)/meshes/_WHEEL_BL_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Revolute 1" type="continuous">
+  <origin xyz="0.224364 -0.224381 -0.13668" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="WHEEL_BR_1"/>
+  <axis xyz="0.707107 -0.707107 -0.0"/>
+</joint>
+
+<joint name="Revolute 2" type="continuous">
+  <origin xyz="0.224364 0.224372 -0.13668" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="WHEEL_FR_1"/>
+  <axis xyz="0.707107 0.707107 -0.0"/>
+</joint>
+
+<joint name="Revolute 3" type="continuous">
+  <origin xyz="-0.224388 0.224372 -0.13668" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="_WHEEL_FL_1"/>
+  <axis xyz="-0.707107 0.707107 0.0"/>
+</joint>
+
+<joint name="Revolute 4" type="continuous">
+  <origin xyz="-0.224388 -0.224381 -0.13668" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="_WHEEL_BL_1"/>
+  <axis xyz="-0.707107 -0.707107 0.0"/>
+</joint>
+
+<!-- lidar joint -->
+<joint name="lidar_joint" type="fixed">
+  <parent link="base_link"/>
+  <child link="lidar_link"/>
+  <origin xyz="0 0 0" rpy="0 0 0"/>
+</joint>
+
+
+<link name="base_footprint">
+  <visual>
+    <origin xyz = "0 0 0" rpy ="0 0 0" />
+    <geometry>
+    <box size = "0.001 0.001 0.001" />
+    </geometry>
+  </visual>
+</link>
+
+
+<joint name = "base_link_joint" type="fixed">
+ <origin xyz="0 0 0" rpy="0 0 0"/>
+  <parent link="base_footprint"/>
+  <child link="base_link"/>
+</joint>
+
+
+
+</robot>
